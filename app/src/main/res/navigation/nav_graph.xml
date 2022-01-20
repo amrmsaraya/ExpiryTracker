@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/viewPagerFragment">
+
+    <fragment
+        android:id="@+id/viewPagerFragment"
+        android:name="com.github.amrmsaraya.expirytracker.presentation.view_pager.ViewPagerFragment"
+        android:label="fragment_view_pager"
+        tools:layout="@layout/fragment_view_pager" />
+    <fragment
+        android:id="@+id/barcodeScannerFragment"
+        android:name="com.github.amrmsaraya.expirytracker.presentation.barcode_scanner.BarcodeScannerFragment"
+        android:label="fragment_barcode_scanner"
+        tools:layout="@layout/fragment_barcode_scanner" />
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.github.amrmsaraya.expirytracker.presentation.home.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/expiredFragment"
+        android:name="com.github.amrmsaraya.expirytracker.presentation.expired.ExpiredFragment"
+        android:label="fragment_expired"
+        tools:layout="@layout/fragment_expired" />
+</navigation>

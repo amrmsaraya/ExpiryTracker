@@ -4,6 +4,7 @@ plugins {
     id("kotlin-kapt")
     id("com.google.devtools.ksp") version "1.6.10-1.0.2"
     id("dagger.hilt.android.plugin")
+    id("kotlin-android")
 }
 
 android {
@@ -55,6 +56,7 @@ dependencies {
     implementation(Libs.app_compat)
     implementation(Libs.material)
     implementation(Libs.constraint_layout)
+    implementation("androidx.legacy:legacy-support-v4:1.0.0")
 
     // Test
     testImplementation(TestLibs.junit)
