@@ -51,7 +51,7 @@
                 android:text="Expiration Date"
                 android:textAlignment="viewEnd"
                 android:textAppearance="?attr/textAppearanceBodyMedium"
-                android:textColor="?attr/colorPrimary" />
+                android:textColor="?attr/colorError" />
 
         </LinearLayout>
 
