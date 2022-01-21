@@ -47,6 +47,7 @@
         android:padding="8dp"
         android:src="@drawable/ic_baseline_arrow_back_24"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="#FFFFFFFF" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
