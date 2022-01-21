@@ -44,11 +44,11 @@
                 android:textAppearance="?attr/textAppearanceBodyMedium" />
 
             <TextView
-                android:id="@+id/tvExpirationDate"
+                android:id="@+id/tvExpiryDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/expiration_date"
+                android:text="@string/expiry_date"
                 android:textAlignment="viewEnd"
                 android:textAppearance="?attr/textAppearanceBodyMedium"
                 android:textColor="?attr/colorPrimary" />

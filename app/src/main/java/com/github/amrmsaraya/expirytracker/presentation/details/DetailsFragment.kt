@@ -32,24 +32,16 @@ class DetailsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val datePicker = MaterialDatePicker.Builder.datePicker()
-            .setCalendarConstraints(
-                CalendarConstraints.Builder()
-                    .setValidator(DateValidatorPointForward.now())
-                    .build()
-            )
-            .setTitleText(getString(R.string.select_expiration_date))
-            .build()
+        val datePicker = materialDatePicker()
 
         datePicker.addOnPositiveButtonClickListener {
             date = it
-            println(SimpleDateFormat("y/MM/dd", Locale.getDefault()).format(it))
-            binding.tfExpirationDate.editText?.setText(
-                SimpleDateFormat("y/MM/dd", Locale.getDefault()).format(it)
+            binding.tfExpiryDate.editText?.setText(
+                SimpleDateFormat("y/MM/dd hh:mm:ss", Locale.getDefault()).format(it)
             )
         }
 
-        binding.btnDate.setOnClickListener {
+        binding.btnExpiryDate.setOnClickListener {
             datePicker.show(childFragmentManager, "MATERIAL_DATE_PICKER")
         }
 
@@ -60,11 +52,29 @@ class DetailsFragment : Fragment() {
         binding.detailsAppBar.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.menuSave -> {
+                    val name = binding.tfName.editText?.text.toString()
+                    val category = binding.tfCategory.editText?.text.toString()
                     true
                 }
                 else -> false
             }
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
+    private fun materialDatePicker(): MaterialDatePicker<Long> {
+        val constraints = CalendarConstraints.Builder()
+            .setValidator(DateValidatorPointForward.now())
+            .build()
+
+        return MaterialDatePicker.Builder.datePicker()
+            .setCalendarConstraints(constraints)
+            .setTitleText(getString(R.string.select_expiry_date))
+            .build()
     }
 
 }

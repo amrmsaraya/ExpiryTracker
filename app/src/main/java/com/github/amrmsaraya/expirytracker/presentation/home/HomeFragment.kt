@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -13,6 +14,9 @@ import com.github.amrmsaraya.expirytracker.R
 import com.github.amrmsaraya.expirytracker.databinding.FragmentHomeBinding
 import com.github.amrmsaraya.expirytracker.utils.isPermissionGranted
 import com.github.amrmsaraya.expirytracker.utils.openSettings
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import java.text.SimpleDateFormat
+import java.util.*
 
 class HomeFragment : Fragment() {
 
@@ -57,7 +61,31 @@ class HomeFragment : Fragment() {
 
     private fun initRecyclerView() {
         binding.rvValid.layoutManager = LinearLayoutManager(context)
-        binding.rvValid.adapter = ValidAdapter { TODO() }
+        binding.rvValid.adapter = ValidAdapter {
+            mockExpiryDate { expiryDate ->
+                Toast.makeText(
+                    context,
+                    SimpleDateFormat("y/MM/dd h:mm a", Locale.getDefault()).format(expiryDate),
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        }
         adapter = binding.rvValid.adapter as ValidAdapter
+    }
+
+    private fun mockExpiryDate(onMockExpiryDate: (Long) -> Unit) {
+        val items = listOf(6, 12, 18, 24)
+
+        MaterialAlertDialogBuilder(requireContext())
+            .setTitle("Mock Expiry Date")
+            .setSingleChoiceItems(
+                items.map { "$it hours" }.toTypedArray(),
+                0
+            ) { dialog, i ->
+                val mockedExpiryDate = System.currentTimeMillis() + (items[i] * 60 * 60 * 1000)
+                onMockExpiryDate(mockedExpiryDate)
+                dialog.dismiss()
+            }
+            .show()
     }
 }

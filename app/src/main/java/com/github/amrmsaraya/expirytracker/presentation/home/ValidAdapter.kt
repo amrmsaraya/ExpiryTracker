@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.github.amrmsaraya.expirytracker.databinding.ValidCardBinding
 
 class ValidAdapter(
-    private val onClick: () -> Unit
+    private val onLongClick: () -> Unit
 ) : ListAdapter<String, ValidAdapter.ValidViewHolder>(ValidDiffUtil) {
 
     inner class ValidViewHolder(val binding: ValidCardBinding) :
@@ -25,7 +25,10 @@ class ValidAdapter(
     }
 
     override fun onBindViewHolder(holder: ValidViewHolder, position: Int) {
-
+        holder.binding.root.setOnLongClickListener {
+            onLongClick()
+            true
+        }
     }
 }
 
