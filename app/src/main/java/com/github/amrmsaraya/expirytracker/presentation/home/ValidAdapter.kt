@@ -11,7 +11,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class ValidAdapter(
-    private val onLongClick: (Product) -> Unit
+    private val onClick: (Product) -> Unit
 ) : ListAdapter<Product, ValidAdapter.ValidViewHolder>(ValidDiffUtil) {
 
     inner class ValidViewHolder(val binding: ValidCardBinding) :
@@ -33,9 +33,8 @@ class ValidAdapter(
             binding.tvCategory.text = getItem(position).category
             binding.tvExpiryDate.text = getItem(position).expiryDate.formatDate()
 
-            holder.binding.root.setOnLongClickListener {
-                onLongClick(getItem(position))
-                true
+            holder.binding.root.setOnClickListener {
+                onClick(getItem(position))
             }
         }
     }
