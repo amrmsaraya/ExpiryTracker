@@ -3,13 +3,20 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/circle_button_background.xml" value="0.3287037037037037" />
+        <entry key="app/src/main/res/drawable/ic_baseline_add_24.xml" value="0.3287037037037037" />
+        <entry key="app/src/main/res/drawable/ic_baseline_arrow_back_24.xml" value="0.3287037037037037" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2957427536231884" />
+        <entry key="app/src/main/res/layout/circle_button_baclground.xml" value="0.2957427536231884" />
+        <entry key="app/src/main/res/layout/dialog_item_details.xml" value="0.40884718498659517" />
         <entry key="app/src/main/res/layout/expired_card.xml" value="0.2957427536231884" />
-        <entry key="app/src/main/res/layout/fragment_barcode_scanner.xml" value="0.2957427536231884" />
+        <entry key="app/src/main/res/layout/fragment_barcode_scanner.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/fragment_details.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_expired.xml" value="0.2957427536231884" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.2957427536231884" />
         <entry key="app/src/main/res/layout/fragment_view_pager.xml" value="0.2957427536231884" />
         <entry key="app/src/main/res/layout/valid_card.xml" value="0.5" />
+        <entry key="app/src/main/res/menu/details_menu.xml" value="0.35208333333333336" />
       </map>
     </option>
   </component>

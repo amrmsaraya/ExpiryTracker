@@ -26,7 +26,7 @@
             android:layout_weight="1"
             android:ellipsize="end"
             android:maxLines="2"
-            android:text="Name"
+            android:text="@string/name"
             android:textAppearance="?attr/textAppearanceTitleMedium" />
 
 
@@ -40,7 +40,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Category"
+                android:text="@string/category"
                 android:textAppearance="?attr/textAppearanceBodyMedium" />
 
             <TextView
@@ -48,7 +48,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Expiration Date"
+                android:text="@string/expiration_date"
                 android:textAlignment="viewEnd"
                 android:textAppearance="?attr/textAppearanceBodyMedium"
                 android:textColor="?attr/colorPrimary" />

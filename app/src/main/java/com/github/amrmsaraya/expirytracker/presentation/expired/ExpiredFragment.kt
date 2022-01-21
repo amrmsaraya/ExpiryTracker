@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.amrmsaraya.expirytracker.databinding.FragmentExpiredBinding
 
-
 class ExpiredFragment : Fragment() {
 
     private var _binding: FragmentExpiredBinding? = null
@@ -17,15 +16,19 @@ class ExpiredFragment : Fragment() {
     private lateinit var adapter: ExpiredAdapter
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentExpiredBinding.inflate(layoutInflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         initRecyclerView()
         adapter.submitList(List(10) { "" })
-
-        return binding.root
     }
 
     override fun onDestroyView() {

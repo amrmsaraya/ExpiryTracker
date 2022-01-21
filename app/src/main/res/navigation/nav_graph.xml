@@ -25,4 +25,8 @@
         android:name="com.github.amrmsaraya.expirytracker.presentation.expired.ExpiredFragment"
         android:label="fragment_expired"
         tools:layout="@layout/fragment_expired" />
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="com.github.amrmsaraya.expirytracker.presentation.details.DetailsFragment"
+        android:label="DetailsFragment" />
 </navigation>

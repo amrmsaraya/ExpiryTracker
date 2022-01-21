@@ -3,4 +3,14 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="add_new_item">Add new item</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+    <string name="item_details">Item Details</string>
+    <string name="name">Name</string>
+    <string name="category">Category</string>
+    <string name="expiration_date">Expiration Date</string>
+    <string name="choose_expiration_date">Choose expiration date</string>
+    <string name="back">Back</string>
+    <string name="home">HOME</string>
+    <string name="expired">EXPIRED</string>
 </resources>
