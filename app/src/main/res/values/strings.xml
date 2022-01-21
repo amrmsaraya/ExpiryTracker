@@ -9,7 +9,7 @@
     <string name="name">Name</string>
     <string name="category">Category</string>
     <string name="expiration_date">Expiration Date</string>
-    <string name="choose_expiration_date">Choose expiration date</string>
+    <string name="select_expiration_date">Select expiration date</string>
     <string name="back">Back</string>
     <string name="home">HOME</string>
     <string name="expired">EXPIRED</string>

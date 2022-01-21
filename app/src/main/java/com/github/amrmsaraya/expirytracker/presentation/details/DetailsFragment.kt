@@ -38,9 +38,8 @@ class DetailsFragment : Fragment() {
                     .setValidator(DateValidatorPointForward.now())
                     .build()
             )
-            .setTitleText("Select expiration date")
+            .setTitleText(getString(R.string.select_expiration_date))
             .build()
-
 
         datePicker.addOnPositiveButtonClickListener {
             date = it
@@ -67,6 +66,5 @@ class DetailsFragment : Fragment() {
             }
         }
     }
-
 
 }

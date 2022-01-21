@@ -34,7 +34,6 @@ class ViewPagerFragment : Fragment() {
 
         binding.viewPager.adapter = adapter
 
-
         TabLayoutMediator(binding.tabs, binding.viewPager) { tab, position ->
             when (position) {
                 0 -> tab.text = "HOME"

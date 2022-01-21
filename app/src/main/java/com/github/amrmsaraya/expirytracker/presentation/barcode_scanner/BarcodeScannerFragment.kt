@@ -55,44 +55,6 @@ class BarcodeScannerFragment : Fragment() {
         binding.barcodeScanner.decodeContinuous { result ->
             beepManager.playBeepSound()
             findNavController().navigate(R.id.detailsFragment)
-
-
-//                val datePicker = MaterialDatePicker.Builder.datePicker()
-//                    .setCalendarConstraints(
-//                        CalendarConstraints.Builder()
-//                            .setOpenAt(System.currentTimeMillis())
-//                            .build()
-//                    )
-//                    .build()
-//
-//                datePicker.addOnPositiveButtonClickListener {
-//                    date = it
-//                }
-//                datePicker.show(childFragmentManager, null)
-
-//            MaterialAlertDialogBuilder(requireContext()).apply {
-//                setView(dialogBinding.root)
-//                setTitle(getString(R.string.item_details))
-//                setPositiveButton(getString(R.string.save)) { _, _ ->
-//                    val title = dialogBinding.tfTitle.editText?.text.toString()
-//                    val category = dialogBinding.tfCategory.editText?.text.toString()
-//                    findNavController().popBackStack()
-//                }
-//                setNegativeButton(getString(R.string.cancel)) { _, _ ->
-//                    onDialogDismiss()
-//                }
-//                setOnDismissListener {
-//                    onDialogDismiss()
-//                }
-//                show()
-//            }
-        }
-    }
-
-    private fun onDialogDismiss() {
-        _binding?.let {
-            binding.barcodeScanner.resume()
-            binding.root.visibility = View.VISIBLE
         }
     }
 

@@ -99,7 +99,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="1dp"
                 android:layout_marginBottom="1dp"
-                android:contentDescription="@string/choose_expiration_date"
+                android:contentDescription="@string/select_expiration_date"
                 android:padding="20dp"
                 android:src="@drawable/ic_baseline_today_24" />
 

@@ -48,7 +48,6 @@ class HomeFragment : Fragment() {
                 false -> permissionRequest.launch(Manifest.permission.CAMERA)
             }
         }
-
     }
 
     override fun onDestroyView() {
