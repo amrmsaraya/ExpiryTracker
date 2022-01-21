@@ -9,11 +9,12 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="128dp"
+        android:layout_height="128dp"
         android:layout_gravity="center"
         android:contentDescription="@string/you_have_no_products"
-        app:srcCompat="@drawable/ic_open_box" />
+        app:srcCompat="@drawable/outline_inventory_24"
+        app:tint="?attr/colorPrimary" />
 
     <TextView
         android:id="@+id/textView"
