@@ -19,4 +19,7 @@
     <string name="product_details">Product Details</string>
     <string name="discard_unsaved_changes">Discard unsaved changes?</string>
     <string name="discard">Discard</string>
+    <string name="expired_products">Expired Products</string>
+    <string name="has_been_expired">has been expired</string>
+    <string name="expired_product">Expired Product</string>
 </resources>

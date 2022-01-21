@@ -91,7 +91,7 @@ dependencies {
     // Hilt
     implementation(Libs.hilt_android)
     kapt(Libs.hilt_compiler_dagger_kapt)
-    implementation(Libs.hilt_compose_navigation)
+    implementation(Libs.hilt_work)
     kapt(Libs.hilt_compiler_android_kapt)
 
     // WorkManager

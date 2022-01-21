@@ -36,6 +36,7 @@ object Versions {
     const val room = "2.4.0"
     const val hilt = "2.40.5"
     const val work_manager = "2.7.1"
+    const val hilt_work = "1.0.0"
     const val zxing = "4.3.0"
 
     // Test
@@ -74,8 +75,8 @@ object Libs {
     // Hilt
     const val hilt_android = "com.google.dagger:hilt-android:${Versions.hilt}"
     const val hilt_compiler_dagger_kapt = "com.google.dagger:hilt-compiler:${Versions.hilt}"
-    const val hilt_compose_navigation = "androidx.hilt:hilt-navigation-compose:1.0.0-rc01"
     const val hilt_compiler_android_kapt = "androidx.hilt:hilt-compiler:1.0.0"
+    const val hilt_work = "androidx.hilt:hilt-work:${Versions.hilt_work}"
 
     // Navigation
     const val navigation = "androidx.navigation:navigation-fragment-ktx:${Versions.navigation}"
