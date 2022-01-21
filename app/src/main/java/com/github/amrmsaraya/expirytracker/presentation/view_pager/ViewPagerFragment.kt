@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.github.amrmsaraya.expirytracker.R
 import com.github.amrmsaraya.expirytracker.databinding.FragmentViewPagerBinding
 import com.github.amrmsaraya.expirytracker.presentation.expired.ExpiredFragment
 import com.github.amrmsaraya.expirytracker.presentation.home.HomeFragment
@@ -36,8 +37,8 @@ class ViewPagerFragment : Fragment() {
 
         TabLayoutMediator(binding.tabs, binding.viewPager) { tab, position ->
             when (position) {
-                0 -> tab.text = "HOME"
-                1 -> tab.text = "EXPIRED"
+                0 -> tab.text = getString(R.string.home)
+                1 -> tab.text = getString(R.string.expired)
             }
         }.attach()
 
