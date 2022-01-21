@@ -23,6 +23,8 @@
         android:contentDescription="@string/add_new_item"
         android:focusable="true"
         android:src="@drawable/ic_baseline_add_24"
+        app:backgroundTint="?attr/colorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:tint="?attr/colorOnPrimary" />
 </androidx.constraintlayout.widget.ConstraintLayout>

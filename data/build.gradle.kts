@@ -37,6 +37,9 @@ android {
 
 dependencies {
 
+    // Local Modules
+    implementation(project(":domain"))
+
     // Core
     implementation(Libs.core_ktx)
     implementation(Libs.app_compat)
