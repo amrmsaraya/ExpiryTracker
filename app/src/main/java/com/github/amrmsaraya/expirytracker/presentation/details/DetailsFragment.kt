@@ -111,12 +111,12 @@ class DetailsFragment : Fragment() {
     }
 
     private fun materialDatePicker(): MaterialDatePicker<Long> {
-        val constraints = CalendarConstraints.Builder()
-            .setValidator(DateValidatorPointForward.now())
-            .build()
-
         return MaterialDatePicker.Builder.datePicker()
-            .setCalendarConstraints(constraints)
+            .setCalendarConstraints(
+                CalendarConstraints.Builder()
+                    .setValidator(DateValidatorPointForward.now())
+                    .build()
+            )
             .setTitleText(getString(R.string.select_expiry_date))
             .build()
     }
