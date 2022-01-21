@@ -6,10 +6,13 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.github.amrmsaraya.expirytracker.databinding.ValidCardBinding
+import com.github.amrmsaraya.expirytracker.domain.entity.Product
+import java.text.SimpleDateFormat
+import java.util.*
 
 class ValidAdapter(
-    private val onLongClick: () -> Unit
-) : ListAdapter<String, ValidAdapter.ValidViewHolder>(ValidDiffUtil) {
+    private val onLongClick: (Product) -> Unit
+) : ListAdapter<Product, ValidAdapter.ValidViewHolder>(ValidDiffUtil) {
 
     inner class ValidViewHolder(val binding: ValidCardBinding) :
         RecyclerView.ViewHolder(binding.root)
@@ -25,19 +28,29 @@ class ValidAdapter(
     }
 
     override fun onBindViewHolder(holder: ValidViewHolder, position: Int) {
-        holder.binding.root.setOnLongClickListener {
-            onLongClick()
-            true
+        holder.apply {
+            binding.tvTitle.text = getItem(position).name
+            binding.tvCategory.text = getItem(position).category
+            binding.tvExpiryDate.text = getItem(position).expiryDate.formatDate()
+
+            holder.binding.root.setOnLongClickListener {
+                onLongClick(getItem(position))
+                true
+            }
         }
     }
 }
 
-object ValidDiffUtil : DiffUtil.ItemCallback<String>() {
-    override fun areItemsTheSame(oldItem: String, newItem: String): Boolean {
-        return oldItem == newItem
+private fun Long.formatDate(): String {
+    return SimpleDateFormat("y/MM/dd", Locale.getDefault()).format(this)
+}
+
+object ValidDiffUtil : DiffUtil.ItemCallback<Product>() {
+    override fun areItemsTheSame(oldItem: Product, newItem: Product): Boolean {
+        return oldItem.barcode == newItem.barcode
     }
 
-    override fun areContentsTheSame(oldItem: String, newItem: String): Boolean {
+    override fun areContentsTheSame(oldItem: Product, newItem: Product): Boolean {
         return oldItem == newItem
     }
 

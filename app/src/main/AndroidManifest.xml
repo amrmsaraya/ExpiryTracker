@@ -9,6 +9,7 @@
     <uses-feature android:name="android.hardware.flash" />
 
     <application
+        android:name=".di.App"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"

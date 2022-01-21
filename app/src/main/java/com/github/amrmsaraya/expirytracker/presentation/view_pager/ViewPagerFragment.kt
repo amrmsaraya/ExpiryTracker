@@ -10,7 +10,9 @@ import com.github.amrmsaraya.expirytracker.databinding.FragmentViewPagerBinding
 import com.github.amrmsaraya.expirytracker.presentation.expired.ExpiredFragment
 import com.github.amrmsaraya.expirytracker.presentation.home.HomeFragment
 import com.google.android.material.tabs.TabLayoutMediator
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ViewPagerFragment : Fragment() {
 
     private var _binding: FragmentViewPagerBinding? = null

@@ -4,6 +4,7 @@ import com.github.amrmsaraya.expirytracker.domain.repository.ProductRepo
 import com.github.amrmsaraya.expirytracker.domain.usecase.GetExpiredProductsUseCase
 import com.github.amrmsaraya.expirytracker.domain.usecase.GetNotNotifiedExpiredProductsUseCase
 import com.github.amrmsaraya.expirytracker.domain.usecase.GetValidProductsUseCase
+import com.github.amrmsaraya.expirytracker.domain.usecase.InsertProductsUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -12,7 +13,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-class Usecase {
+class UseCase {
 
     @Singleton
     @Provides
@@ -30,5 +31,11 @@ class Usecase {
     @Provides
     fun provideGetNotNotifiedExpiredProductsUseCase(productRepo: ProductRepo): GetNotNotifiedExpiredProductsUseCase {
         return GetNotNotifiedExpiredProductsUseCase(productRepo)
+    }
+
+    @Singleton
+    @Provides
+    fun provideInsertProductsUseCase(productRepo: ProductRepo): InsertProductsUseCase {
+        return InsertProductsUseCase(productRepo)
     }
 }

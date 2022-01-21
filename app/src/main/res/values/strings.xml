@@ -11,4 +11,6 @@
     <string name="back">Back</string>
     <string name="home">HOME</string>
     <string name="expired">EXPIRED</string>
+    <string name="mock_expiry_date">Mock Expiry Date</string>
+    <string name="you_have_no_products">You have no products</string>
 </resources>

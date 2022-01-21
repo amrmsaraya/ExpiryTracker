@@ -9,9 +9,9 @@ class GetNotNotifiedExpiredProductsUseCase(private val productRepo: ProductRepo)
     fun invoke(): Flow<List<Product>> {
         return productRepo.getProducts().map {
             it.filter { product ->
-                product.expireDate < System.currentTimeMillis() && !product.isNotified
+                product.expiryDate < System.currentTimeMillis() && !product.isNotified
             }.sortedByDescending { product ->
-                product.expireDate
+                product.expiryDate
             }
         }
     }

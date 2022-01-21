@@ -9,7 +9,9 @@ import androidx.navigation.fragment.findNavController
 import com.github.amrmsaraya.expirytracker.R
 import com.github.amrmsaraya.expirytracker.databinding.FragmentBarcodeScannerBinding
 import com.google.zxing.client.android.BeepManager
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class BarcodeScannerFragment : Fragment() {
 
     private var _binding: FragmentBarcodeScannerBinding? = null

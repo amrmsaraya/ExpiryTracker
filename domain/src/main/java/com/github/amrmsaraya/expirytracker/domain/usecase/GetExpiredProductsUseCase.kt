@@ -9,9 +9,9 @@ class GetExpiredProductsUseCase(private val productRepo: ProductRepo) {
     fun invoke(): Flow<List<Product>> {
         return productRepo.getProducts().map {
             it.filter { product ->
-                product.expireDate < System.currentTimeMillis()
+                product.expiryDate < System.currentTimeMillis()
             }.sortedByDescending { product ->
-                product.expireDate
+                product.expiryDate
             }
         }
     }

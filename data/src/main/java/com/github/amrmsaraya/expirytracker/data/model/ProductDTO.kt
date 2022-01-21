@@ -9,6 +9,6 @@ data class ProductDTO(
     val barcode: String,
     val name: String,
     val category: String,
-    val expireDate: Long,
+    val expiryDate: Long,
     val isNotified: Boolean
 )

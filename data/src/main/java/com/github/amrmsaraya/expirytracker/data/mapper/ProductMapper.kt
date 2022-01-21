@@ -8,7 +8,7 @@ fun ProductDTO.toProduct(): Product {
         barcode = barcode,
         name = name,
         category = category,
-        expireDate = expireDate,
+        expiryDate = expiryDate,
         isNotified = isNotified
     )
 }
@@ -18,7 +18,7 @@ fun Product.toProductDTO(): ProductDTO {
         barcode = barcode,
         name = name,
         category = category,
-        expireDate = expireDate,
+        expiryDate = expiryDate,
         isNotified = isNotified
     )
 }
