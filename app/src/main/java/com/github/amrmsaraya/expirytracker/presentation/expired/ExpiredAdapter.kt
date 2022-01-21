@@ -6,10 +6,11 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.github.amrmsaraya.expirytracker.databinding.ExpiredCardBinding
+import com.github.amrmsaraya.expirytracker.domain.entity.Product
+import java.text.SimpleDateFormat
+import java.util.*
 
-class ExpiredAdapter(
-    private val onClick: () -> Unit
-) : ListAdapter<String, ExpiredAdapter.ValidViewHolder>(ValidDiffUtil) {
+class ExpiredAdapter : ListAdapter<Product, ExpiredAdapter.ValidViewHolder>(ValidDiffUtil) {
 
     inner class ValidViewHolder(val binding: ExpiredCardBinding) :
         RecyclerView.ViewHolder(binding.root)
@@ -25,16 +26,24 @@ class ExpiredAdapter(
     }
 
     override fun onBindViewHolder(holder: ValidViewHolder, position: Int) {
+        holder.apply {
+            binding.tvTitle.text = getItem(position).name
+            binding.tvCategory.text = getItem(position).category
+            binding.tvExpiryDate.text = getItem(position).expiryDate.formatDate()
+        }
     }
 }
 
-object ValidDiffUtil : DiffUtil.ItemCallback<String>() {
-    override fun areItemsTheSame(oldItem: String, newItem: String): Boolean {
-        return oldItem == newItem
+object ValidDiffUtil : DiffUtil.ItemCallback<Product>() {
+    override fun areItemsTheSame(oldItem: Product, newItem: Product): Boolean {
+        return oldItem.barcode == newItem.barcode
     }
 
-    override fun areContentsTheSame(oldItem: String, newItem: String): Boolean {
+    override fun areContentsTheSame(oldItem: Product, newItem: Product): Boolean {
         return oldItem == newItem
     }
+}
 
+private fun Long.formatDate(): String {
+    return SimpleDateFormat("y/MM/dd", Locale.getDefault()).format(this)
 }

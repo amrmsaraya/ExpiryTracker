@@ -20,7 +20,7 @@
             app:layout_scrollFlags="scroll|enterAlways|snap"
             app:menu="@menu/details_menu"
             app:navigationIcon="@drawable/ic_baseline_arrow_back_24"
-            app:title="Details" />
+            app:title="@string/product_details" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -94,14 +94,14 @@
             <ImageButton
                 android:id="@+id/btnExpiryDate"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="1dp"
-                android:layout_marginBottom="1dp"
+                android:backgroundTint="?attr/colorPrimary"
                 android:contentDescription="@string/select_expiry_date"
                 android:padding="20dp"
-                android:src="@drawable/ic_baseline_today_24" />
+                android:src="@drawable/ic_baseline_today_24"
+                app:tint="?attr/colorOnPrimary" />
 
         </LinearLayout>
 

@@ -9,8 +9,14 @@
     <string name="expiry_date">Expiry Date</string>
     <string name="select_expiry_date">Select expiry date</string>
     <string name="back">Back</string>
-    <string name="home">HOME</string>
-    <string name="expired">EXPIRED</string>
+    <string name="home">Home</string>
+    <string name="expired">Expired</string>
     <string name="mock_expiry_date">Mock Expiry Date</string>
     <string name="you_have_no_products">You have no products</string>
+    <string name="other">Other</string>
+    <string name="error_name_empty">Name is required</string>
+    <string name="error_date_empty">Date is required</string>
+    <string name="product_details">Product Details</string>
+    <string name="discard_unsaved_changes">Discard unsaved changes?</string>
+    <string name="discard">Discard</string>
 </resources>

@@ -41,10 +41,6 @@ class ValidAdapter(
     }
 }
 
-private fun Long.formatDate(): String {
-    return SimpleDateFormat("y/MM/dd", Locale.getDefault()).format(this)
-}
-
 object ValidDiffUtil : DiffUtil.ItemCallback<Product>() {
     override fun areItemsTheSame(oldItem: Product, newItem: Product): Boolean {
         return oldItem.barcode == newItem.barcode
@@ -53,5 +49,8 @@ object ValidDiffUtil : DiffUtil.ItemCallback<Product>() {
     override fun areContentsTheSame(oldItem: Product, newItem: Product): Boolean {
         return oldItem == newItem
     }
+}
 
+private fun Long.formatDate(): String {
+    return SimpleDateFormat("y/MM/dd", Locale.getDefault()).format(this)
 }

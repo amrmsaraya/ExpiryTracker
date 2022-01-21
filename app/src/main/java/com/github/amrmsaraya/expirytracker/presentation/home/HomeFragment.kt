@@ -72,8 +72,10 @@ class HomeFragment : Fragment() {
     private fun initRecyclerView() {
         binding.rvValid.layoutManager = LinearLayoutManager(context)
         binding.rvValid.adapter = ValidAdapter { product ->
-            mockExpiryDate { expiryDate ->
-                viewModel.sendIntent(HomeIntent.InsertProduct(product.copy(expiryDate = expiryDate)))
+            if (product.expiryDate > System.currentTimeMillis() + 24 * 60 * 60 * 1000) {
+                mockExpiryDate { expiryDate ->
+                    viewModel.sendIntent(HomeIntent.InsertProduct(product.copy(expiryDate = expiryDate)))
+                }
             }
         }
         adapter = binding.rvValid.adapter as ValidAdapter
@@ -81,15 +83,21 @@ class HomeFragment : Fragment() {
 
     private fun mockExpiryDate(onMockExpiryDate: (Long) -> Unit) {
         val items = listOf(6, 12, 18, 24)
-
+        var checkedItem = 0
         MaterialAlertDialogBuilder(requireContext())
             .setTitle(getString(R.string.mock_expiry_date))
             .setSingleChoiceItems(
                 items.map { "$it hours" }.toTypedArray(),
                 0
-            ) { dialog, i ->
-                val mockedExpiryDate = System.currentTimeMillis() + (items[i] * 60 * 60 * 1000)
+            ) { _, i ->
+                checkedItem = i
+            }
+            .setPositiveButton(getString(R.string.save)) { _, _ ->
+                val mockedExpiryDate =
+                    System.currentTimeMillis() + (items[checkedItem] * 60 * 60 * 1000)
                 onMockExpiryDate(mockedExpiryDate)
+            }
+            .setNegativeButton(getString(R.string.cancel)) { dialog, _ ->
                 dialog.dismiss()
             }
             .show()

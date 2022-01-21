@@ -1,9 +1,8 @@
-package com.github.amrmsaraya.expirytracker.presentation.home
+package com.github.amrmsaraya.expirytracker.presentation.expired
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.github.amrmsaraya.expirytracker.domain.entity.Product
-import com.github.amrmsaraya.expirytracker.domain.usecase.GetValidProductsUseCase
+import com.github.amrmsaraya.expirytracker.domain.usecase.GetExpiredProductsUseCase
 import com.github.amrmsaraya.expirytracker.domain.usecase.InsertProductsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
@@ -15,16 +14,16 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class HomeViewModel @Inject constructor(
-    private val getValidProductsUseCase: GetValidProductsUseCase,
+class ExpiredViewModel @Inject constructor(
+    private val getExpiredProductsUseCase: GetExpiredProductsUseCase,
     private val insertProductsUseCase: InsertProductsUseCase,
     private val dispatcher: CoroutineDispatcher = Dispatchers.Main
 ) : ViewModel() {
 
-    private var _uiState = MutableStateFlow(HomeUiState())
+    private var _uiState = MutableStateFlow(ExpiredUiState())
     val uiState = _uiState.asStateFlow()
 
-    private val intentFlow = MutableSharedFlow<HomeIntent>()
+    private val intentFlow = MutableSharedFlow<ExpiredIntent>()
 
     init {
         handleIntent()
@@ -34,24 +33,19 @@ class HomeViewModel @Inject constructor(
     private fun handleIntent() = viewModelScope.launch(dispatcher) {
         intentFlow.collect {
             when (it) {
-                is HomeIntent.GetProducts -> getProducts()
-                is HomeIntent.InsertProduct -> insertProduct(it.product)
+                is ExpiredIntent.GetProducts -> getProducts()
             }
         }
     }
 
-    fun sendIntent(intent: HomeIntent) = viewModelScope.launch(dispatcher) {
+    fun sendIntent(intent: ExpiredIntent) = viewModelScope.launch(dispatcher) {
         intentFlow.emit(intent)
     }
 
     private fun getProducts() = viewModelScope.launch(dispatcher) {
-        getValidProductsUseCase.invoke().collect {
+        getExpiredProductsUseCase.invoke().collect {
             _uiState.value = uiState.value.copy(products = it)
         }
-    }
-
-    private fun insertProduct(product: Product) = viewModelScope.launch(dispatcher) {
-        insertProductsUseCase.invoke(product)
     }
 
 }

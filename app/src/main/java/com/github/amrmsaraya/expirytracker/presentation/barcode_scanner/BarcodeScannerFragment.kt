@@ -55,9 +55,11 @@ class BarcodeScannerFragment : Fragment() {
         }
 
         binding.barcodeScanner.decodeContinuous { result ->
-            val x = result.text
+            val bundle = Bundle().apply {
+                putString("barcode", result.text)
+            }
             beepManager.playBeepSound()
-            findNavController().navigate(R.id.detailsFragment)
+            findNavController().navigate(R.id.detailsFragment, bundle)
         }
     }
 

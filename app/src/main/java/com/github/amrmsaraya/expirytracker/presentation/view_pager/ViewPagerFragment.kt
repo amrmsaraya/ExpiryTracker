@@ -39,8 +39,8 @@ class ViewPagerFragment : Fragment() {
 
         TabLayoutMediator(binding.tabs, binding.viewPager) { tab, position ->
             when (position) {
-                0 -> tab.text = getString(R.string.home)
-                1 -> tab.text = getString(R.string.expired)
+                0 -> tab.text = getString(R.string.home).uppercase()
+                1 -> tab.text = getString(R.string.expired).uppercase()
             }
         }.attach()
 
