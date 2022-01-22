@@ -34,12 +34,12 @@ class BarcodeScannerFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        var flash = false
 
         binding.btnBack.setOnClickListener {
             findNavController().popBackStack()
         }
 
+        var flash = false
         binding.fabFlash.setOnClickListener {
             flash = !flash
             when (flash) {
@@ -53,6 +53,8 @@ class BarcodeScannerFragment : Fragment() {
                 }
             }
         }
+
+        binding.barcodeScanner.setStatusText("")
 
         binding.barcodeScanner.decodeContinuous { result ->
             val bundle = Bundle().apply {

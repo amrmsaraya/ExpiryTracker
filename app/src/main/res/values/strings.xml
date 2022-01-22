@@ -22,4 +22,5 @@
     <string name="expired_products">Expired Products</string>
     <string name="has_been_expired">has been expired</string>
     <string name="expired_product">Expired Product</string>
+    <string name="flash">Flash</string>
 </resources>
