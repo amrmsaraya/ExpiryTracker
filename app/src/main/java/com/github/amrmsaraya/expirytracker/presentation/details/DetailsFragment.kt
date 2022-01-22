@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.addCallback
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -30,6 +31,7 @@ class DetailsFragment : Fragment() {
     private var date = 0L
     private var barcode = ""
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -43,6 +45,12 @@ class DetailsFragment : Fragment() {
 
         barcode = arguments?.getString("barcode") ?: ""
 
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
+            showBackConfirmationDialog {
+                findNavController().popBackStack()
+            }
+        }
+
         val datePicker = materialDatePicker()
 
         datePicker.addOnPositiveButtonClickListener {
@@ -55,15 +63,9 @@ class DetailsFragment : Fragment() {
         }
 
         binding.detailsAppBar.setNavigationOnClickListener {
-            MaterialAlertDialogBuilder(requireContext())
-                .setTitle(getString(R.string.discard_unsaved_changes))
-                .setPositiveButton(getString(R.string.discard)) { _, _ ->
-                    findNavController().popBackStack()
-                }
-                .setNegativeButton(getString(R.string.cancel)) { dialogInterface, _ ->
-                    dialogInterface.dismiss()
-                }
-                .show()
+            showBackConfirmationDialog {
+                findNavController().popBackStack()
+            }
         }
 
         binding.tfName.editText?.addTextChangedListener {
@@ -100,6 +102,18 @@ class DetailsFragment : Fragment() {
                 else -> false
             }
         }
+    }
+
+    private fun showBackConfirmationDialog(onConfirm: () -> Unit) {
+        MaterialAlertDialogBuilder(requireContext())
+            .setTitle(getString(R.string.discard_unsaved_changes))
+            .setPositiveButton(getString(R.string.discard)) { _, _ ->
+                onConfirm()
+            }
+            .setNegativeButton(getString(R.string.cancel)) { dialogInterface, _ ->
+                dialogInterface.dismiss()
+            }
+            .show()
     }
 
     override fun onDestroyView() {
