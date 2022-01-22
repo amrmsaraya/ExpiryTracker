@@ -114,7 +114,11 @@ class DetailsFragment : Fragment() {
         return MaterialDatePicker.Builder.datePicker()
             .setCalendarConstraints(
                 CalendarConstraints.Builder()
-                    .setValidator(DateValidatorPointForward.now())
+                    .setValidator(
+                        DateValidatorPointForward.from(
+                            System.currentTimeMillis() - (2 * 60 * 60 * 1000)
+                        )
+                    )
                     .build()
             )
             .setTitleText(getString(R.string.select_expiry_date))
