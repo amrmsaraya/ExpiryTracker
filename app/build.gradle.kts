@@ -1,10 +1,9 @@
 plugins {
     id("com.android.application")
-    kotlin("android")
+    id("kotlin-android")
     id("kotlin-kapt")
     id("com.google.devtools.ksp") version "1.6.10-1.0.2"
     id("dagger.hilt.android.plugin")
-    id("kotlin-android")
 }
 
 android {
@@ -67,6 +66,8 @@ dependencies {
     androidTestImplementation(AndroidTestLibs.junit)
     androidTestImplementation(AndroidTestLibs.truth)
     androidTestImplementation(AndroidTestLibs.espresso)
+    androidTestImplementation(AndroidTestLibs.arch_core)
+    androidTestImplementation(AndroidTestLibs.coroutines)
 
     // Splash Screen
     implementation(Libs.splashscreen)

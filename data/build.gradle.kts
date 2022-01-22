@@ -55,6 +55,8 @@ dependencies {
     androidTestImplementation(AndroidTestLibs.junit)
     androidTestImplementation(AndroidTestLibs.truth)
     androidTestImplementation(AndroidTestLibs.espresso)
+    androidTestImplementation(AndroidTestLibs.arch_core)
+    androidTestImplementation(AndroidTestLibs.coroutines)
 
     // Coroutine
     implementation(Libs.coroutines_core)

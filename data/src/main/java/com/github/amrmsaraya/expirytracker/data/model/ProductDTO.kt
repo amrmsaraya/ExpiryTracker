@@ -6,9 +6,9 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "product")
 data class ProductDTO(
     @PrimaryKey
-    val barcode: String,
-    val name: String,
-    val category: String,
-    val expiryDate: Long,
-    val isNotified: Boolean
+    val barcode: String = "",
+    val name: String = "",
+    val category: String = "",
+    val expiryDate: Long = 0L,
+    val isNotified: Boolean = false
 )

@@ -44,6 +44,7 @@ object Versions {
     const val junit_android = "1.1.3"
     const val truth = "1.1.3"
     const val espresso = "3.4.0"
+    const val arch_core = "2.1.0"
 
 }
 
@@ -101,4 +102,7 @@ object AndroidTestLibs {
     const val junit = "androidx.test.ext:junit:${Versions.junit_android}"
     const val truth = "com.google.truth:truth:${Versions.truth}"
     const val espresso = "androidx.test.espresso:espresso-core:${Versions.espresso}"
+    const val coroutines =
+        "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.coroutines}"
+    const val arch_core = "androidx.arch.core:core-testing:${Versions.arch_core}"
 }
