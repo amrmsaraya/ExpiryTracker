@@ -3,6 +3,7 @@ package com.github.amrmsaraya.expirytracker.utils
 import android.app.Notification
 import android.app.NotificationChannel
 import android.app.NotificationManager
+import android.app.PendingIntent
 import android.content.Context
 import android.os.Build
 import androidx.annotation.DrawableRes
@@ -28,6 +29,7 @@ fun Context.createNotification(
     content: String,
     @DrawableRes icon: Int,
     priority: Int = NotificationCompat.PRIORITY_DEFAULT,
+    intent: PendingIntent? = null
 ): Notification {
     return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
         NotificationCompat.Builder(this, channelId).apply {
@@ -35,6 +37,7 @@ fun Context.createNotification(
             setContentText(content)
             setSmallIcon(icon)
             setPriority(priority)
+            intent?.let { setContentIntent(intent) }
         }.build()
     } else {
         NotificationCompat.Builder(this).apply {
@@ -42,6 +45,7 @@ fun Context.createNotification(
             setContentText(content)
             setSmallIcon(icon)
             setPriority(priority)
+            intent?.let { setContentIntent(intent) }
         }.build()
     }
 }
