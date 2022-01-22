@@ -7,8 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.github.amrmsaraya.expirytracker.databinding.ExpiredCardBinding
 import com.github.amrmsaraya.expirytracker.domain.entity.Product
-import java.text.SimpleDateFormat
-import java.util.*
+import com.github.amrmsaraya.expirytracker.utils.formatDate
 
 class ExpiredAdapter : ListAdapter<Product, ExpiredAdapter.ValidViewHolder>(ValidDiffUtil) {
 
@@ -42,8 +41,4 @@ object ValidDiffUtil : DiffUtil.ItemCallback<Product>() {
     override fun areContentsTheSame(oldItem: Product, newItem: Product): Boolean {
         return oldItem == newItem
     }
-}
-
-private fun Long.formatDate(): String {
-    return SimpleDateFormat("y/MM/dd", Locale.getDefault()).format(this)
 }

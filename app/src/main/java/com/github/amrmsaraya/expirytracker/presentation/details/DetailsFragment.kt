@@ -11,13 +11,12 @@ import androidx.navigation.fragment.findNavController
 import com.github.amrmsaraya.expirytracker.R
 import com.github.amrmsaraya.expirytracker.databinding.FragmentDetailsBinding
 import com.github.amrmsaraya.expirytracker.domain.entity.Product
+import com.github.amrmsaraya.expirytracker.utils.formatDate
 import com.google.android.material.datepicker.CalendarConstraints
 import com.google.android.material.datepicker.DateValidatorPointForward
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.android.AndroidEntryPoint
-import java.text.SimpleDateFormat
-import java.util.*
 
 
 @AndroidEntryPoint
@@ -48,9 +47,7 @@ class DetailsFragment : Fragment() {
 
         datePicker.addOnPositiveButtonClickListener {
             date = it
-            binding.tfExpiryDate.editText?.setText(
-                SimpleDateFormat("y/MM/dd", Locale.getDefault()).format(it)
-            )
+            binding.tfExpiryDate.editText?.setText(it.formatDate())
         }
 
         binding.btnExpiryDate.setOnClickListener {
