@@ -8,7 +8,6 @@ import io.mockk.coVerify
 import io.mockk.every
 import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
 import kotlinx.coroutines.test.runTest
@@ -56,7 +55,7 @@ class HomeViewModelTest {
             homeViewModel.sendIntent(HomeIntent.GetProducts)
 
             // Then
-            assertThat(homeViewModel.uiState.first().products).containsExactly(
+            assertThat(homeViewModel.uiState.value.products).containsExactly(
                 product1,
                 product2,
                 product3

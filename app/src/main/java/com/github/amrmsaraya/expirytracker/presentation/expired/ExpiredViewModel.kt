@@ -3,7 +3,6 @@ package com.github.amrmsaraya.expirytracker.presentation.expired
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.github.amrmsaraya.expirytracker.domain.usecase.GetExpiredProductsUseCase
-import com.github.amrmsaraya.expirytracker.domain.usecase.InsertProductsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
@@ -16,7 +15,6 @@ import javax.inject.Inject
 @HiltViewModel
 class ExpiredViewModel @Inject constructor(
     private val getExpiredProductsUseCase: GetExpiredProductsUseCase,
-    private val insertProductsUseCase: InsertProductsUseCase,
     private val dispatcher: CoroutineDispatcher = Dispatchers.Main
 ) : ViewModel() {
 
@@ -44,7 +42,7 @@ class ExpiredViewModel @Inject constructor(
 
     private fun getProducts() = viewModelScope.launch(dispatcher) {
         getExpiredProductsUseCase.invoke().collect {
-            _uiState.value = uiState.value.copy(products = it)
+            _uiState.value = _uiState.value.copy(products = it)
         }
     }
 
