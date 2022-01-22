@@ -46,7 +46,7 @@ class HomeViewModel @Inject constructor(
 
     private fun getProducts() = viewModelScope.launch(dispatcher) {
         getValidProductsUseCase.invoke().collect {
-            _uiState.value = uiState.value.copy(products = it)
+            _uiState.value = _uiState.value.copy(products = it)
         }
     }
 
