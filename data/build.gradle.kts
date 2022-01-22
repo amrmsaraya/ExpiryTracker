@@ -50,6 +50,8 @@ dependencies {
     testImplementation(TestLibs.junit)
     testImplementation(TestLibs.coroutines)
     testImplementation(TestLibs.truth)
+    testImplementation(TestLibs.mockk)
+    testImplementation(TestLibs.mockk_jvm)
 
     // Android Test
     androidTestImplementation(AndroidTestLibs.junit)
@@ -57,6 +59,8 @@ dependencies {
     androidTestImplementation(AndroidTestLibs.espresso)
     androidTestImplementation(AndroidTestLibs.arch_core)
     androidTestImplementation(AndroidTestLibs.coroutines)
+    androidTestImplementation(AndroidTestLibs.mockk)
+    androidTestImplementation(AndroidTestLibs.mockk_jvm)
 
     // Coroutine
     implementation(Libs.coroutines_core)

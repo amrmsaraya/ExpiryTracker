@@ -45,6 +45,7 @@ object Versions {
     const val truth = "1.1.3"
     const val espresso = "3.4.0"
     const val arch_core = "2.1.0"
+    const val mockk = "1.12.2"
 
 }
 
@@ -96,6 +97,8 @@ object TestLibs {
     const val coroutines =
         "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.coroutines}"
     const val truth = "com.google.truth:truth:${Versions.truth}"
+    const val mockk = "io.mockk:mockk:${Versions.mockk}"
+    const val mockk_jvm = "io.mockk:mockk-agent-jvm:${Versions.mockk}"
 }
 
 object AndroidTestLibs {
@@ -105,4 +108,6 @@ object AndroidTestLibs {
     const val coroutines =
         "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.coroutines}"
     const val arch_core = "androidx.arch.core:core-testing:${Versions.arch_core}"
+    const val mockk = "io.mockk:mockk:${Versions.mockk}"
+    const val mockk_jvm = "io.mockk:mockk-agent-jvm:${Versions.mockk}"
 }
