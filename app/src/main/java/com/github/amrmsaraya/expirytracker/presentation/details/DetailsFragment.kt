@@ -28,10 +28,6 @@ class DetailsFragment : Fragment() {
 
     private val viewModel: DetailsViewModel by viewModels()
 
-    private var date = 0L
-    private var barcode = ""
-
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -43,18 +39,27 @@ class DetailsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        barcode = arguments?.getString("barcode") ?: ""
-
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
             showBackConfirmationDialog {
                 findNavController().popBackStack()
             }
         }
 
+        viewModel.uiState.value.apply {
+            binding.tfName.editText?.setText(name)
+            binding.tfCategory.editText?.setText(category)
+            if (expiryDate != 0L) {
+                binding.tfExpiryDate.editText?.setText(expiryDate.formatDate())
+            }
+            viewModel.sendIntent(
+                DetailsIntent.UpdateBarcode(arguments?.getString("barcode") ?: "")
+            )
+        }
+
         val datePicker = materialDatePicker()
 
         datePicker.addOnPositiveButtonClickListener {
-            date = it
+            viewModel.sendIntent(DetailsIntent.UpdateDate(it))
             binding.tfExpiryDate.editText?.setText(it.formatDate())
         }
 
@@ -69,10 +74,15 @@ class DetailsFragment : Fragment() {
         }
 
         binding.tfName.editText?.addTextChangedListener {
+            viewModel.sendIntent(DetailsIntent.UpdateName(it.toString()))
             when (it.toString().isEmpty()) {
                 true -> binding.tfName.error = getString(R.string.error_name_empty)
                 false -> binding.tfName.error = ""
             }
+        }
+
+        binding.tfCategory.editText?.addTextChangedListener {
+            viewModel.sendIntent(DetailsIntent.UpdateCategory(it.toString()))
         }
 
         binding.tfExpiryDate.editText?.addTextChangedListener {
@@ -85,17 +95,24 @@ class DetailsFragment : Fragment() {
         binding.detailsAppBar.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.menuSave -> {
-                    val name = binding.tfName.editText?.text.toString()
-                    val category = binding.tfCategory.editText?.text.toString()
-                    val product = Product(
-                        barcode = barcode,
-                        name = name,
-                        category = if (category.isNotEmpty()) category else getString(R.string.other),
-                        expiryDate = date
-                    )
+                    val product = viewModel.uiState.value.let { uiState ->
+                        Product(
+                            barcode = uiState.barcode,
+                            name = uiState.name,
+                            category = when (uiState.category.isEmpty()) {
+                                true -> getString(R.string.other)
+                                false -> uiState.category
+                            },
+                            expiryDate = uiState.expiryDate
+                        )
+                    }
+
                     if (validateProduct(product)) {
-                        viewModel.insertProduct(product)
-                        findNavController().popBackStack()
+                        viewModel.sendIntent(
+                            DetailsIntent.InsertProduct(product) {
+                                findNavController().popBackStack()
+                            }
+                        )
                     }
                     true
                 }
@@ -143,9 +160,9 @@ class DetailsFragment : Fragment() {
         if (product.expiryDate == 0L) {
             binding.tfExpiryDate.error = getString(R.string.error_date_empty)
         }
-        return barcode.isNotEmpty() &&
-                binding.tfName.editText?.text.toString().isNotEmpty() &&
-                date != 0L
+        return product.barcode.isNotEmpty()
+                && product.name.isNotEmpty()
+                && product.expiryDate != 0L
     }
 
 }
