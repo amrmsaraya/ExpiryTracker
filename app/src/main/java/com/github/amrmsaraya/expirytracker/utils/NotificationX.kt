@@ -29,6 +29,7 @@ fun Context.createNotification(
     content: String,
     @DrawableRes icon: Int,
     priority: Int = NotificationCompat.PRIORITY_DEFAULT,
+    autoCancel: Boolean = true,
     intent: PendingIntent? = null
 ): Notification {
     return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -37,6 +38,7 @@ fun Context.createNotification(
             setContentText(content)
             setSmallIcon(icon)
             setPriority(priority)
+            setAutoCancel(autoCancel)
             intent?.let { setContentIntent(intent) }
         }.build()
     } else {
@@ -45,6 +47,7 @@ fun Context.createNotification(
             setContentText(content)
             setSmallIcon(icon)
             setPriority(priority)
+            setAutoCancel(autoCancel)
             intent?.let { setContentIntent(intent) }
         }.build()
     }
