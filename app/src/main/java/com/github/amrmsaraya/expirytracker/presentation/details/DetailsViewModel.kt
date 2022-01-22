@@ -33,7 +33,7 @@ class DetailsViewModel @Inject constructor(
                 is DetailsIntent.UpdateBarcode -> updateBarcode(it.barcode)
                 is DetailsIntent.UpdateName -> updateName(it.name)
                 is DetailsIntent.UpdateCategory -> updateCategory(it.category)
-                is DetailsIntent.UpdateDate -> updateDate(it.date)
+                is DetailsIntent.UpdateExpiryDate -> updateExpiryDate(it.date)
                 is DetailsIntent.InsertProduct -> insertProduct(it.product, it.onFinish)
             }
         }
@@ -44,19 +44,19 @@ class DetailsViewModel @Inject constructor(
     }
 
     private fun updateBarcode(barcode: String) = viewModelScope.launch(dispatcher) {
-        _uiState.value = uiState.value.copy(barcode = barcode)
+        _uiState.value = _uiState.value.copy(barcode = barcode)
     }
 
     private fun updateName(name: String) = viewModelScope.launch(dispatcher) {
-        _uiState.value = uiState.value.copy(name = name)
+        _uiState.value = _uiState.value.copy(name = name)
     }
 
     private fun updateCategory(category: String) = viewModelScope.launch(dispatcher) {
-        _uiState.value = uiState.value.copy(category = category)
+        _uiState.value = _uiState.value.copy(category = category)
     }
 
-    private fun updateDate(date: Long) = viewModelScope.launch(dispatcher) {
-        _uiState.value = uiState.value.copy(expiryDate = date)
+    private fun updateExpiryDate(date: Long) = viewModelScope.launch(dispatcher) {
+        _uiState.value = _uiState.value.copy(expiryDate = date)
     }
 
     private fun insertProduct(product: Product, onFinish: () -> Unit) =

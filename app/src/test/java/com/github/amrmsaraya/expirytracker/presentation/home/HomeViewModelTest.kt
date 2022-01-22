@@ -63,7 +63,7 @@ class HomeViewModelTest {
         }
 
     @Test
-    fun `sendIntent() with HomeIntent_InsertProduct() then uiState should contain the valid products`() =
+    fun `sendIntent() with HomeIntent_InsertProduct() then insertProductsUseCase Function should be called`() =
         runTest {
 
             // Given

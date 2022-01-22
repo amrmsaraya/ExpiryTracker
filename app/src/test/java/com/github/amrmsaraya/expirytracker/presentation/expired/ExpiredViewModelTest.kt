@@ -28,7 +28,7 @@ class ExpiredViewModelTest {
     }
 
     @Test
-    fun `sendIntent() with HomeIntent_GetProducts then uiState should contain the valid products`() =
+    fun `sendIntent() with ExpiredIntent_GetProducts then uiState should contain the valid products`() =
         runTest {
 
             // Given

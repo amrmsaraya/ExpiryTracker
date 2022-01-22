@@ -59,7 +59,7 @@ class DetailsFragment : Fragment() {
         val datePicker = materialDatePicker()
 
         datePicker.addOnPositiveButtonClickListener {
-            viewModel.sendIntent(DetailsIntent.UpdateDate(it))
+            viewModel.sendIntent(DetailsIntent.UpdateExpiryDate(it))
             binding.tfExpiryDate.editText?.setText(it.formatDate())
         }
 
