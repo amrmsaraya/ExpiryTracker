@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.github.amrmsaraya.expirytracker.R
 import com.github.amrmsaraya.expirytracker.databinding.FragmentBarcodeScannerBinding
+import com.github.amrmsaraya.expirytracker.utils.fullScreenMode
 import com.google.zxing.client.android.BeepManager
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -34,6 +35,8 @@ class BarcodeScannerFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        requireActivity().fullScreenMode(true)
 
         binding.btnBack.setOnClickListener {
             findNavController().popBackStack()
@@ -78,6 +81,7 @@ class BarcodeScannerFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+        requireActivity().fullScreenMode(false)
     }
 
 }
